@@ -1,3 +1,6 @@
+
+<?php include 'Videos_data.php'; ?>
+
 <!doctype html>
 <html lang="en-US">
 
@@ -7,13 +10,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="profile" href="https://gmpg.org/xfn/11">
-  <title>Photos Grid </title>
+  <title>Video Category </title>
 
 
 
   <?php include "components/common-head.php" ?>
 
+  <?php
+  $Video_data = new Videos_data();
+  $videoCategories = $Video_data->categoryData();
 
+?>
 
 
 
@@ -55,78 +62,66 @@
                                 ashade-categ-labels--show">
 
 
-                <div id="album-88"
+                <!-- <div id="album-88"
                   class="ashade-album-item ashade-grid-item  post-88 ashade-albums type-ashade-albums status-publish has-post-thumbnail hentry albums-category-personal-session">
                   <div class="ashade-grid-item--inner">
                     <div class="ashade-album-item__image">
                       <div class="ashade-image ashade-lazy"
-                        data-src="https://demo.shadow-themes.com/wp/ashade/wp-content/uploads/2020/01/album15-alt-1024x640.jpg">
+                        data-src="https://demo.uploads/2020/01/album15-alt-1024x640.jpg">
                         <img
                           src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20960%20640'%3E%3C/svg%3E"
                           width=960 height=640 alt="Goldy Shades">
-                      </div><!-- .ashade-image -->
+                      </div>
                     </div>
                     <h5>
                       <span>Personal Session</span>
                       Goldy Shades
                     </h5>
                     <a href="albums/goldy-shades/index.html" class="ashade-album-item__link"></a>
-                  </div><!-- .ashade-grid-item--inner -->
-                </div><!-- .ashade-album-item -->
-                <div id="album-87"
-                  class="ashade-album-item ashade-grid-item  post-87 ashade-albums type-ashade-albums status-publish has-post-thumbnail hentry albums-category-travel-photos">
-                  <div class="ashade-grid-item--inner">
-                    <div class="ashade-album-item__image">
-                      <div class="ashade-image ashade-lazy"
-                        data-src="https://demo.shadow-themes.com/wp/ashade/wp-content/uploads/2020/01/album16-alt-1024x640.jpg">
-                        <img
-                          src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20960%20640'%3E%3C/svg%3E"
-                          width=960 height=640 alt="Downtown">
-                      </div><!-- .ashade-image -->
-                    </div>
-                    <h5>
-                      <span>Travel Photos</span>
-                      Downtown
-                    </h5>
-                    <a href="albums/downtown/index.html" class="ashade-album-item__link"></a>
-                  </div><!-- .ashade-grid-item--inner -->
-                </div><!-- .ashade-album-item -->
-                <div id="album-86"
-                  class="ashade-album-item ashade-grid-item  post-86 ashade-albums type-ashade-albums status-publish has-post-thumbnail hentry albums-category-wedding-photos">
-                  <div class="ashade-grid-item--inner">
-                    <div class="ashade-album-item__image">
-                      <div class="ashade-image ashade-lazy"
-                        data-src="https://demo.shadow-themes.com/wp/ashade/wp-content/uploads/2020/01/album17-alt-1024x640.jpg">
-                        <img
-                          src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20960%20640'%3E%3C/svg%3E"
-                          width=960 height=640 alt="Happy Brides">
-                      </div><!-- .ashade-image -->
-                    </div>
-                    <h5>
-                      <span>Wedding Photos</span>
-                      Happy Brides
-                    </h5>
-                    <a href="albums/happy-brides/index.html" class="ashade-album-item__link"></a>
-                  </div><!-- .ashade-grid-item--inner -->
-                </div><!-- .ashade-album-item -->
-                <div id="album-67"
-                  class="ashade-album-item ashade-grid-item  post-67 ashade-albums type-ashade-albums status-publish has-post-thumbnail hentry albums-category-commercial-photos">
-                  <div class="ashade-grid-item--inner">
-                    <div class="ashade-album-item__image">
-                      <div class="ashade-image ashade-lazy"
-                        data-src="https://demo.shadow-themes.com/wp/ashade/wp-content/uploads/2020/01/album18-alt-1024x640.jpg">
-                        <img
-                          src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20960%20640'%3E%3C/svg%3E"
-                          width=960 height=640 alt="Crazy Drive">
-                      </div><!-- .ashade-image -->
-                    </div>
-                    <h5>
-                      <span>Commercial Photos</span>
-                      Crazy Drive
-                    </h5>
-                    <a href="albums/crazy-drive/index.html" class="ashade-album-item__link"></a>
-                  </div><!-- .ashade-grid-item--inner -->
-                </div><!-- .ashade-album-item -->
+                  </div>
+                </div> -->
+
+
+                <?php
+
+
+// Loop through each category and render the first video's HTML
+foreach ($videoCategories as $categoryKey => $category) {
+  $category = (Object) $category;
+  if (isset($category->video[0])) {
+      $video = (Object) $category->video[0]; // Get the first video in the category
+      
+      ?>
+      <div id="<?php echo htmlspecialchars($video->id); ?>"
+           class="ashade-album-item ashade-grid-item post-<?php echo htmlspecialchars($video->id); ?> ashade-albums type-ashade-albums status-publish has-post-thumbnail hentry albums-category-<?php echo htmlspecialchars($categoryKey); ?>">
+          <div class="ashade-grid-item--inner">
+              <div class="ashade-album-item__image">
+                  <div class="ashade-image ashade-lazy"
+                       data-src="https://your-image-source-here.jpg"> <!-- Replace with actual thumbnail URL -->
+                      <img
+                        src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20960%20640'%3E%3C/svg%3E"
+                        width=960 height=640 alt="<?php echo htmlspecialchars($video->id); ?>">
+                  </div>
+              </div>
+              <h5>
+                  <span><?php echo htmlspecialchars($category->label); ?></span>
+                  <?php echo htmlspecialchars($video->id); ?>
+              </h5>
+              <a href="videos-grid.php?category=<?php echo urlencode($categoryKey); ?>" class="ashade-album-item__link"></a>
+          </div>
+      </div>
+      <?php
+  }
+}
+?>
+
+
+
+
+
+
+
+
               </div><!-- .ashade-albums-grid -->
             </div><!-- .ashade-col -->
           </div><!-- .ashade-row -->

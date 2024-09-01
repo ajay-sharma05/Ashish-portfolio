@@ -1,4 +1,4 @@
-<?php include 'Helper.php'; ?>
+<?php include 'Photo_data.php'; ?>
 <!doctype html>
 <html lang="en-US">
 
@@ -9,9 +9,32 @@
 
 
   <?php include "components/common-head.php" ?>
+  <link
+      rel="stylesheet"
+      id="photoswipe-css"
+      href="wp-content/plugins/woocommerce/assets/css/photoswipe/photoswipe.min4615.css?ver=9.1.4"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      id="photoswipe-skin-css"
+      href="wp-content/themes/ashade/assets/css/lib/default-skin/default-skinb6a4.css?ver=6.6.1"
+      type="text/css"
+      media="all"
+    />
+    <style>
+      .pswp--zoom-allowed .pswp__img {
+   
+    object-fit: contain;
+    height: auto !important;
+}
+
+
+    </style>
 <?php 
- $helper = new Helper();
- $photoCategories =  $helper->categoryData();
+ $Photo_data = new Photo_data();
+ $photoCategories =  $Photo_data->categoryData();
 
 $category = !empty($_GET['category'])?$_GET['category']:'';
 
@@ -116,6 +139,9 @@ if(isset($photoCategories[$category]))
 
   <?php include "components/aside.php" ?>
   <?php include "components/common-foot.php" ?>
+  <script type="text/javascript" src="wp-content/plugins/shadow-core/assets/js/lib/photoswipe.minb6a4.js?ver=6.6.1" id="photoswipe-js" data-wp-strategy="defer"></script>
+<script type="text/javascript" src="wp-content/plugins/shadow-core/assets/js/lib/photoswipe-ui-default.minb6a4.js?ver=6.6.1" id="photoswipe-ui-js"></script>
+<script type="text/javascript" id="mediaelement-core-js-before">
 
 </body>
 

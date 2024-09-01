@@ -1,4 +1,4 @@
-<?php include 'Helper.php'; ?>
+<?php include 'Photo_data.php'; ?>
 <!doctype html>
 <html lang="en-US">
 
@@ -9,8 +9,8 @@
   <script type="text/javascript" src="wp-includes/js/jquery/jquery.minf43b.js?ver=3.7.1" id="jquery-core-js"></script>
 
   <?php
-  $helper = new Helper();
-  $photoCategories = $helper->categoryData();
+  $Photo_data = new Photo_data();
+  $photoCategories = $Photo_data->categoryData();
 
 ?>
 

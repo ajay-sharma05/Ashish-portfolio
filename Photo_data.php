@@ -1,5 +1,5 @@
 <?php
-class Helper{
+class Photo_data{
     public function categoryData(){
         $photoCategories = [
             'model_photos' => [
