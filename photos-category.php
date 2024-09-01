@@ -11,7 +11,7 @@
   <?php
   $helper = new Helper();
   $photoCategories = $helper->categoryData();
-  print_r($photoCategories)
+
 ?>
 
 
@@ -33,8 +33,9 @@
 
 // Loop through each category and render the first photo's HTML
 foreach ($photoCategories as $categoryKey => $category) {
+  $category= (Object) $category;
     if (isset($category->photos[0])) {
-        $photo = $category->photos[0]; // Get the first photo in the category
+        $photo = (Object) $category->photos[0]; // Get the first photo in the category
     
         
         ?>

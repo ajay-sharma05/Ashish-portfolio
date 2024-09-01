@@ -104,6 +104,11 @@ class Reels_data{
                     [
                         'id' => 'commercial-reel-4',
                         'video_src' => 'https://res.cloudinary.com/visualsofashii/video/upload/v1724755903/videos/commercial%20reel/lksnemurm7dgeczx4bxz.mp4'
+                    ],
+               
+                    [
+                        'id' => 'commercial-reel-5',
+                        'video_src' => 'https://res.cloudinary.com/visualsofashii/video/upload/v1725122328/Saundh_Event_Mischief_Mumma_g2s8ye.mp4'
                     ]
                 ]
             ],
@@ -133,15 +138,7 @@ class Reels_data{
                     ]
                 ]
             ],
-            'commercial_reel_last' => [
-                'label' => 'Commercial Reel Last',
-                'Reels' => [
-                    [
-                        'id' => 'commercial-reel-last-1',
-                        'video_src' => 'https://res.cloudinary.com/visualsofashii/video/upload/v1725122328/Saundh_Event_Mischief_Mumma_g2s8ye.mp4'
-                    ]
-                ]
-            ],
+          
             'concert_video' => [
                 'label' => 'Concert Video',
                 'Reels' => [
